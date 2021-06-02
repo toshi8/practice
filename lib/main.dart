@@ -152,7 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
               width: 100,
               height: 90,
             ),
-            title: Text('aaFirebase Firestoreのセキュリティルール勉強会 by Kosuke'),
+            title: Text('Firebase Firestoreのセキュリティルール勉強会 by Kosuke'),
             subtitle: Text('296 回視聴・2日前'),
             trailing: IconButton(
               icon: const Icon(Icons.more_vert),
