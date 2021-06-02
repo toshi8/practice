@@ -134,7 +134,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             Padding(
                               padding: const EdgeInsets.all(2),
                               child: Text(
-                                'チャンネル登録者数 7690人',
+                                'チャンネル登録者数 76900人',
                               ),
                             ),
                           ],
