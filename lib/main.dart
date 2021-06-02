@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:practice/main_model.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -6,6 +8,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,45 +16,34 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  String thisText = 'Create model';
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Create model'),
-      ),
-      body: Column(
-        children: [
-          Text(
-            thisText,
-            style: TextStyle(
-              fontSize: 15,
-            ),
+      home: ChangeNotifierProvider<MainModel>(
+        create: (context) => MainModel(),
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text('Create model'),
           ),
-          ElevatedButton(
-            onPressed: () {
-              setState(() {
-                thisText = 'new';
-              });
+          body: Consumer<MainModel>(
+            builder: (context, model, child) {
+              return Column(
+                children: [
+                  Text(
+                    model.thisText,
+                    // Provider.of<String>(context),
+                    style: TextStyle(
+                      fontSize: 15,
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      model.changeThisText();
+                    },
+                    child: Text('push'),
+                  ),
+                ],
+              );
             },
-            child: Text('push'),
           ),
-        ],
+        ),
       ),
     );
   }
