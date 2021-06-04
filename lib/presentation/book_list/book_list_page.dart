@@ -16,15 +16,48 @@ class BookListPage extends StatelessWidget {
         body: Consumer<BookListModel>(
           builder: (context, model, child) {
             final books = model.books;
-            final ListTiles = books
+            final listTiles = books
                 .map(
                   (book) => ListTile(
                     title: Text(book.title),
+                    trailing: IconButton(
+                      icon: const Icon(Icons.edit),
+                      onPressed: () {
+                        print('object');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AddBookPage(book: book),
+                            fullscreenDialog: true,
+                          ),
+                        );
+                      },
+                    ),
+                    onLongPress: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) => AlertDialog(
+                          title: Text('${book.title}を本当に削除しますか？'),
+                          actions: [
+                            TextButton(
+                              onPressed: () async {
+                                Navigator.of(context).pop();
+                                model.deleteBook(book);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                        content: Text('${book.title}を削除しました')));
+                              },
+                              child: Text('削除'),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
                   ),
                 )
                 .toList();
             return ListView(
-              children: ListTiles,
+              children: listTiles,
             );
           },
         ),
