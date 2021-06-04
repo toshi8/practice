@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:practice/presentation/login/login_page.dart';
+import 'package:practice/presentation/signup/signup_page.dart';
 import 'package:provider/provider.dart';
 
 import '../book_list/book_list_page.dart';
@@ -51,6 +53,24 @@ class MyApp extends StatelessWidget {
                       );
                     },
                     child: Text('view firebase'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SignupPage()),
+                      );
+                    },
+                    child: Text('会員登録'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginPage()),
+                      );
+                    },
+                    child: Text('ログイン'),
                   ),
                 ],
               );
