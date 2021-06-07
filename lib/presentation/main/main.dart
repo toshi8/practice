@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:practice/presentation/login/login_page.dart';
+import 'package:practice/presentation/loginSample/login_main.dart';
 import 'package:practice/presentation/signup/signup_page.dart';
 import 'package:provider/provider.dart';
 
@@ -71,6 +72,16 @@ class MyApp extends StatelessWidget {
                       );
                     },
                     child: Text('ログイン'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => AuthTypeSelector()),
+                      );
+                    },
+                    child: Text('ログインNew'),
                   ),
                 ],
               );
