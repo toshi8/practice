@@ -15,32 +15,59 @@ class AddBookPage extends StatelessWidget {
     final bool isUpdate = book != null;
     return ChangeNotifierProvider<AddBookModel>(
       create: (context) => AddBookModel(),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text((isUpdate) ? '更新' : '追加'),
-        ),
-        body: Consumer<AddBookModel>(
-          builder: (context, model, child) {
-            return Column(
-              children: [
-                TextField(
-                  controller: TextEditingController(
-                    text: (isUpdate) ? book!.title : '',
-                  ),
-                  onChanged: (text) {
-                    model.bookTitle = text;
-                  },
-                ),
-                TextButton(
-                  onPressed: () async {
-                    await updateBook(isUpdate, model, context);
-                  },
-                  child: Text((isUpdate) ? '更新する' : '追加する'),
-                ),
-              ],
-            );
-          },
-        ),
+      child: Stack(
+        children: [
+          Scaffold(
+            appBar: AppBar(
+              title: Text((isUpdate) ? '更新' : '追加'),
+            ),
+            body: Consumer<AddBookModel>(
+              builder: (context, model, child) {
+                return Column(
+                  children: [
+                    SizedBox(
+                      width: 100,
+                      height: 200,
+                      child: GestureDetector(
+                        onTap: () async {
+                          await model.getImage();
+                        },
+                        child: Column(
+                          children: [
+                            if (model.galleryImage != null)
+                              Image.file(model.galleryImage!)
+                            else if (book != null)
+                              Image.network(book!.ImageUrl)
+                            else
+                              Container(
+                                color: Colors.grey,
+                                width: 100.0,
+                                height: 200.0,
+                              )
+                          ],
+                        ),
+                      ),
+                    ),
+                    TextField(
+                      controller: TextEditingController(
+                        text: (isUpdate) ? book!.title : '',
+                      ),
+                      onChanged: (text) {
+                        model.bookTitle = text;
+                      },
+                    ),
+                    TextButton(
+                      onPressed: () async {
+                        await updateBook(isUpdate, model, context);
+                      },
+                      child: Text((isUpdate) ? '更新する' : '追加する'),
+                    ),
+                  ],
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

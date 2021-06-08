@@ -19,6 +19,16 @@ class BookListPage extends StatelessWidget {
             final listTiles = books
                 .map(
                   (book) => ListTile(
+                    leading: (book.ImageUrl != '')
+                        ? Image.network(book.ImageUrl)
+                        : Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              color: Colors.grey,
+                              width: 100.0,
+                              height: 100.0,
+                            ),
+                          ),
                     title: Text(book.title),
                     trailing: IconButton(
                       icon: const Icon(Icons.edit),

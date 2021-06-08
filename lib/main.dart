@@ -5,8 +5,9 @@ import 'package:practice/presentation/loginSample/login_main.dart';
 import 'package:practice/presentation/signup/signup_page.dart';
 import 'package:provider/provider.dart';
 
-import '../book_list/book_list_page.dart';
-import 'main_model.dart';
+import 'presentation/book_list/book_list_page.dart';
+import 'presentation/main/main_model.dart';
+import 'presentation/whisky_list/whisky_list_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); //２行目だけだとエラーになるので追加
@@ -50,10 +51,20 @@ class MyApp extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
+                        MaterialPageRoute(
+                            builder: (context) => WhiskyListPage()),
+                      );
+                    },
+                    child: Text('view whisky'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
                         MaterialPageRoute(builder: (context) => BookListPage()),
                       );
                     },
-                    child: Text('view firebase'),
+                    child: Text('view book'),
                   ),
                   ElevatedButton(
                     onPressed: () {
