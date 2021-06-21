@@ -44,6 +44,7 @@ class AddBookModel extends ChangeNotifier {
 
   Future getImage() async {
     try {
+      print('tes');
       final _textController = TextEditingController();
       final pickedFile = await picker.getImage(source: ImageSource.gallery);
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practice/presentation/signup/signup_model.dart';
+import 'package:practice/presentation/practice/signup/signup_model.dart';
 import 'package:provider/provider.dart';
 
 class SignupPage extends StatelessWidget {

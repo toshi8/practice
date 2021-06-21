@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_builder.dart';
-import 'package:practice/presentation/loginSample/register_page.dart';
-import 'package:practice/presentation/loginSample/signin_page.dart';
+import 'package:practice/presentation/practice/loginSample/register_page.dart';
+import 'package:practice/presentation/practice/loginSample/signin_page.dart';
 
 // Requires that the Firebase Auth emulator is running locally
 // e.g via `melos run firebase:emulator`.
